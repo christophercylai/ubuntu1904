@@ -6,4 +6,4 @@ Some Tips on Ubuntu1904
 
 #### disable supplying password to sudo
 * sudo visudo
-* add this line at the end of the file: <user> ALL=(ALL:ALL) NOPASSWD:ALL
+* add this line at the end of the file: /<user/> ALL=(ALL:ALL) NOPASSWD:ALL
