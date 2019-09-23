@@ -13,6 +13,6 @@ sudo apt install libavcodec-extra
 
 ### install these to watch Netflix
 * install these Firefox Add-ons
-** Widevine Content Decryption Module provided by Google Inc.
-** OpenH264 Video Codec provided by Cisco Systems, Inc.
+  * Widevine Content Decryption Module provided by Google Inc.
+  * OpenH264 Video Codec provided by Cisco Systems, Inc.
 * sudo apt install libavcodec-extra
