@@ -1,4 +1,4 @@
-# ubuntu1904
+# ubuntu1910
 Some Tips on Ubuntu1904
 sudo apt install libavcodec-extra
 ### select 3 to use vim as the default editor
