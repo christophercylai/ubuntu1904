@@ -13,3 +13,7 @@ sudo apt install libavcodec-extra
   * Widevine Content Decryption Module provided by Google Inc.
   * OpenH264 Video Codec provided by Cisco Systems, Inc.
 * sudo apt install libavcodec-extra
+
+### setting up vnc server
+* sudo apt install x11vnc
+* x11vnc -forever
