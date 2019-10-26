@@ -19,3 +19,11 @@ sudo apt install libavcodec-extra
 * x11vnc -forever
 * if you have x-server with your main computer, you can ssh into ubuntu with "ssh -Y <username>:<hostname>"
 * start remmina and log in to the server
+
+### change ubuntu resolution in Hyper-V
+* sudo vim /etc/default/grub
+* find the line: GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+* for example, I want to have "1600x900" resolution, then I added "video=hyperv_fb:1600x900" to the string:
+  * GRUB_CMDLINE_LINUX_DEFAULT="quiet splash video=hyperv_fb:1600x900"
+* sudo update-grub
+* sudo shutdown -r now
