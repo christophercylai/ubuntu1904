@@ -14,6 +14,8 @@ sudo apt install libavcodec-extra
   * OpenH264 Video Codec provided by Cisco Systems, Inc.
 * sudo apt install libavcodec-extra
 
-### setting up vnc server
-* sudo apt install x11vnc
+### setting up vnc server and remmina to allow remote connection with ssh
+* sudo apt install x11vnc remmina openssh-server
 * x11vnc -forever
+* if you have x-server with your main computer, you can ssh into ubuntu with "ssh -Y <username>:<hostname>"
+* start remmina and log in to the server
