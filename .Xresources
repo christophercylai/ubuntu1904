@@ -1,6 +1,5 @@
-! This is the global resources file that is loaded when
-! all users log in, as well as for the login screen
-
+! Use <xrdb -merge ~/.Xresources> to commit changes
+!
 ! Fix the Xft dpi to 96; this prevents tiny fonts
 ! or HUGE fonts depending on the screen size.
 Xft.dpi: 96
@@ -12,14 +11,17 @@ Xft.dpi: 96
 Xft.hintstyle: hintmedium
 Xft.hinting: true
 
-!color
-xterm.termName: xterm-256color
-xterm*background: black
-xterm*foreground: grey
+! color
+xterm*background:   black
+xterm*foreground:   grey
 
-!window
-xterm*ScrollBar: false
-xterm*toolBar: off 
-
-!font
+! font
+xterm*faceName: Bitstream Vera Serif Mono
+xterm*faceSize: 9
 xterm*boldFont: fixed
+
+! xterm layout
+xterm*vt100*geometry: 60x30
+xterm*scrollBar: false
+xterm*toolBar: false
+xterm.termName: xterm-256color
