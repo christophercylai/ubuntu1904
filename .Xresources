@@ -18,7 +18,7 @@ xterm*foreground:   grey
 ! font
 xterm*faceName: Bitstream Vera Serif Mono
 xterm*faceSize: 9
-xterm*boldFont: fixed
+xterm*allowBoldFonts: false
 
 ! xterm layout
 xterm*vt100*geometry: 60x30
