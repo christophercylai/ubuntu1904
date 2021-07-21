@@ -20,8 +20,13 @@ sudo hostnamectl set-hostname <hostname>
 sudo timedatectl set-timezone America/Vancouver
 
 # optional disable supplying password to sudo
-# add this line at the end of the file: \<user\> ALL=(ALL:ALL) NOPASSWD:ALL
+## add this line at the end of the file: \<user\> ALL=(ALL:ALL) NOPASSWD:ALL
 sudo visudo
+
+# modify .bashrc
+cat <<EOF>> .bashrc
+> alias vim="TERM=xterm-256color vim"  # for pgup/pgdn in vim to work in tmux properly
+> EOF
 ```
 
 ### Hardware Configuration
@@ -34,13 +39,14 @@ sudo fdisk <new_drive>
 # [p] - print the current partition table
 # [d] - add new partition
 # [n] - add new partition
-# [w] - save the changes
+# [w] - save the changes and exit
 
 # format disk
 sudo mkfs.ext4 <new_drive>  # format disk to ext4 file system
 
 # create a mount point
-mkdir /second_drive
+sudo mkdir /second_drive
+sudo chmod 755
 
 # mount temporarily (optional - for testing)
 sudo mount <new_drive> /second_drive
