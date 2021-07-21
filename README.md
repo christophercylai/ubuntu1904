@@ -57,7 +57,7 @@ sudo chmod 755
 # mount temporarily (optional - for testing)
 sudo mount <new_drive> /second_drive
  
-# mount permanently (for AWS)
+# mount permanently
 sudo blkid <new_drive>  # use this command to find out the UUID of the new drive
 sudo vim /etc/fstab
   # add: UUID=<UUID> /second_drive  ext4    defaults    0 0
