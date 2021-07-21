@@ -1,4 +1,4 @@
-# Ubuntu Settings
+# Ubuntu Server Settings
 Some Tips on Ubuntu1904
 
 ### Basic Configuration Options
