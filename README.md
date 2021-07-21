@@ -43,7 +43,7 @@ sudo fdisk -l
 sudo fdisk <new_drive>
 # some of the commands
 # [p] - print the current partition table
-# [d] - add new partition
+# [d] - delete partition
 # [n] - add new partition
 # [w] - save the changes and exit
 
