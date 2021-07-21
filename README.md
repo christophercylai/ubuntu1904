@@ -1,29 +1,61 @@
 # Ubuntu Settings
 Some Tips on Ubuntu1904
-sudo apt install libavcodec-extra
-### select 3 to use vim as the default editor
-* sudo update-alternatives --config editor
 
-### disable supplying password to sudo
-* sudo visudo
-* add this line at the end of the file: \<user\> ALL=(ALL:ALL) NOPASSWD:ALL
+### Basic Configuration Options
+```
+# update to latest
+sudo apt -y update && sudo apt -y upgrade
 
-### install these to watch Netflix on Firefox
-* install these Firefox Add-ons
-  * Widevine Content Decryption Module provided by Google Inc.
-  * OpenH264 Video Codec provided by Cisco Systems, Inc.
-* sudo apt install libavcodec-extra
+# select 3 to use vim as the default editor
+sudo update-alternatives --config editor
 
-### setting up vnc server and remmina to allow remote connection with ssh
-* sudo apt install x11vnc remmina openssh-server
-* x11vnc -forever
-* if you have x-server with your main computer, you can ssh into ubuntu with "ssh -Y <username>:<hostname>"
-* start remmina and log in to the server
+# vim config
+vim ~/.vimrc  # see template
 
-### change ubuntu resolution in Hyper-V
-* sudo vim /etc/default/grub
-* find the line: GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
-* for example, I want to have "1600x900" resolution, then I added "video=hyperv_fb:1600x900" to the string:
-  * GRUB_CMDLINE_LINUX_DEFAULT="quiet splash video=hyperv_fb:1600x900"
-* sudo update-grub
-* sudo shutdown -r now
+# Optional: change hostname
+sudo vim /etc/cloud/cloud.cfg  # set preserve_hostname: true
+sudo hostnamectl set-hostname <hostname>
+
+# change timezone - example Vancouver
+sudo timedatectl set-timezone America/Vancouver
+
+# optional disable supplying password to sudo
+# add this line at the end of the file: \<user\> ALL=(ALL:ALL) NOPASSWD:ALL
+sudo visudo
+```
+
+### Hardware Configuration
+```
+# mount second hard drive to /builder, this is the buildslave directory
+# find <new_drive>
+sudo fdisk -l
+sudo fdisk <new_drive>
+# some of the commands
+# [p] - print the current partition table
+# [d] - add new partition
+# [n] - add new partition
+# [w] - save the changes
+
+# format disk
+sudo mkfs.ext4 <new_drive>  # format disk to ext4 file system
+
+# create a mount point
+mkdir /second_drive
+
+# mount temporarily (optional - for testing)
+sudo mount <new_drive> /second_drive
+ 
+# mount permanently (for AWS)
+sudo blkid <new_drive>  # use this command to find out the UUID of the new drive
+sudo vim /etc/fstab
+  # add: UUID=<UUID> /second_drive  ext4    defaults    0 0
+```
+
+### Developer Configuration
+```
+# for Python development
+sudo apt -y install python3-pip
+sudo ln -s /usr/bin/python3.8 /usr/local/bin/python
+sudo ln -s /usr/bin/pip3 /usr/local/bin/pip
+sudo apt -y install virtualenv
+```
