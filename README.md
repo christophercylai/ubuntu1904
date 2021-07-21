@@ -29,6 +29,12 @@ cat <<EOF>> .bashrc
 > EOF
 ```
 
+### Networking Tools
+```
+# useful tools
+sudo apt -y install openssh-server
+```
+
 ### Hardware Configuration
 ```
 # mount second hard drive to /builder, this is the buildslave directory
