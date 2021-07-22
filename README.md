@@ -66,7 +66,7 @@ sudo vim /etc/fstab
 ### Developer Configuration
 ```
 # for C/C++ development
-sudo apt install build-essential
+sudo apt -y install build-essential
 
 # for Python development
 sudo apt -y install python3-pip
