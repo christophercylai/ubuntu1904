@@ -65,13 +65,16 @@ sudo vim /etc/fstab
 
 ### Developer Configuration
 ```
+# for C/C++ development
+sudo apt install build-essential
+
 # for Python development
 sudo apt -y install python3-pip
 sudo ln -s /usr/bin/python3.8 /usr/local/bin/python
 sudo ln -s /usr/bin/pip3 /usr/local/bin/pip
 sudo apt -y install virtualenv
 
-# run Docker
+# Docker container development
 sudo apt -y install docker
 sudo groupadd docker
 sudo usermod -aG docker $USER
