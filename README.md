@@ -75,4 +75,5 @@ sudo apt -y install virtualenv
 sudo apt -y install docker
 sudo groupadd docker
 sudo usermod -aG docker $USER
+pip install docker-compose
 ```
