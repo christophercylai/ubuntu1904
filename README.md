@@ -1,5 +1,5 @@
 # Ubuntu Server Settings
-Some Tips on Ubuntu1904
+> Version: 20.04
 
 ### Basic Configuration Options
 ```
