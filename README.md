@@ -4,7 +4,7 @@ Some Tips on Ubuntu1904
 ### Basic Configuration Options
 ```
 # update to latest
-sudo apt -y update && sudo apt -y upgrade
+sudo apt -y update && sudo apt -y dist-upgrade
 
 # select 3 to use vim as the default editor
 sudo update-alternatives --config editor
