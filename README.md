@@ -72,7 +72,7 @@ sudo apt -y install build-essential
 sudo apt -y install python3-pip
 sudo ln -s /usr/bin/python3.8 /usr/local/bin/python
 sudo ln -s /usr/bin/pip3 /usr/local/bin/pip
-sudo apt -y install virtualenv
+sudo apt -y install python3-venv
 
 # Docker container development
 sudo apt -y install docker
