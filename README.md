@@ -32,7 +32,11 @@ cat <<EOF>> .bashrc
 ### Networking Tools
 ```
 # useful tools
+# openssh
 sudo apt -y install openssh-server
+
+# X server
+sudo apt -y install xauth
 ```
 
 ### Hardware Configuration
