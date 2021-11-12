@@ -10,6 +10,7 @@ set incsearch
 set hlsearch
 set wildmenu
 set nowrap
+set laststatus=2
 highlight Comment ctermfg=red
 highlight pythonString ctermfg=green
 highlight pythonInclude ctermfg=cyan
