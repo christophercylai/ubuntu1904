@@ -18,3 +18,4 @@ highlight pythonFunction ctermfg=yellow
 highlight linenr ctermfg=Magenta
 let &t_SI = "\<Esc>[6 q"
 let &t_EI = "\<Esc>[2 q"
+autocmd FileType make setlocal shiftwidth=0 softtabstop=0
