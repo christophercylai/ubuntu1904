@@ -27,7 +27,7 @@ else
         cd ${PROFILEDIR}
         tar xzf ${SESSION_TEMPLATE}.tar.gz
         rm ${SESSION_TEMPLATE}.tar.gz
-        mv ${SESSION_TEMPLATE} ${FIREFOX_SESSION}
+        cp -r ${SESSION_TEMPLATE} ${FIREFOX_SESSION}
     else
         # no prior session exists, create a new one
         cd ${PROFILEDIR}
@@ -38,6 +38,7 @@ firefox -profile ${FIREFOX_SESSION} -no-remote -new-instance -private
 
 # saving private session, and preserve the last session with ext .old
 tar czf ${FIREFOX_SESSION}.tar.gz ${FIREFOX_SESSION}
+rm -rf ${SESSION_TEMPLATE} || true
 cd ${CWD}
 mv ${FIREFOX_SESSION}.tar.gz ${FIREFOX_SESSION}.tar.gz.old || true
 mv ${PROFILEDIR}/${FIREFOX_SESSION}.tar.gz .
