@@ -2,8 +2,26 @@
 
 set -e
 
-# required variable: FIREFOX_SESSION
-# optional variable: SESSION_TEMPLATE
+### CONFIGURATION ###
+# The default settings will attempt to start a 'google' session.
+# If google.tar.gz does not exist, attempt to start 'template' session.
+# If template.tar.gz does not exist, a brand new session will start.
+# No session saving and no private browsing.
+# ==========
+# required: session name
+FIREFOX_SESSION='google'
+# optional: allows the use of another saved session as template
+SESSION_TEMPLATE='template'
+# if true, the session will be saved when Firefox is terminated
+SAVE_SESSION=false
+# if true, use private browsing
+PRIVATE=false
+
+if [[ ${PRIVATE} == true ]]; then
+    PRIVATE='-private'
+else
+    PRIVATE=''
+fi
 
 CWD=${PWD}
 
@@ -34,12 +52,14 @@ else
         mkdir ${FIREFOX_SESSION}
     fi
 fi
-firefox -profile ${FIREFOX_SESSION} -no-remote -new-instance -private
+firefox -profile ${FIREFOX_SESSION} -no-remote -new-instance ${PRIVATE}
+rm -rf ${SESSION_TEMPLATE} || true
 
 # saving private session, and preserve the last session with ext .old
-tar czf ${FIREFOX_SESSION}.tar.gz ${FIREFOX_SESSION}
-rm -rf ${SESSION_TEMPLATE} || true
-cd ${CWD}
-mv ${FIREFOX_SESSION}.tar.gz ${FIREFOX_SESSION}.tar.gz.old || true
-mv ${PROFILEDIR}/${FIREFOX_SESSION}.tar.gz .
+if [[ $PRIVATE == true ]]; then
+    tar czf ${FIREFOX_SESSION}.tar.gz ${FIREFOX_SESSION}
+    cd ${CWD}
+    mv ${FIREFOX_SESSION}.tar.gz ${FIREFOX_SESSION}.tar.gz.old || true
+    mv ${PROFILEDIR}/${FIREFOX_SESSION}.tar.gz .
+fi
 rm -rf ${PROFILEDIR}/${FIREFOX_SESSION}
