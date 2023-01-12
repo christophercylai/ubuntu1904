@@ -34,17 +34,13 @@ mkdir -p ${PROFILEDIR}
 
 if [[ -f ${FIREFOX_SESSION}.tar.gz ]]; then
     # previously saved private session exists
-    cp ${FIREFOX_SESSION}.tar.gz ${PROFILEDIR}
+    tar xzf ${FIREFOX_SESSION}.tar.gz -C ${PROFILEDIR}
     cd ${PROFILEDIR}
-    tar xzf ${FIREFOX_SESSION}.tar.gz
-    rm ${FIREFOX_SESSION}.tar.gz
 else
     if [[ -f ${SESSION_TEMPLATE}.tar.gz ]]; then
         # use another saved session as template for the new session
-        cp ${SESSION_TEMPLATE}.tar.gz ${PROFILEDIR}
+        tar xzf ${SESSION_TEMPLATE}.tar.gz -C ${PROFILEDIR}
         cd ${PROFILEDIR}
-        tar xzf ${SESSION_TEMPLATE}.tar.gz
-        rm ${SESSION_TEMPLATE}.tar.gz
         cp -r ${SESSION_TEMPLATE} ${FIREFOX_SESSION}
     else
         # no prior session exists, create a new one
