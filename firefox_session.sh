@@ -11,11 +11,11 @@ set -e
 # required: session name
 FIREFOX_SESSION='google'
 # optional: allows the use of another saved session as template
-SESSION_TEMPLATE='template'
+SESSION_TEMPLATE='google'
 # if true, the session will be saved when Firefox is terminated
 SAVE_SESSION=false
 # if true, use private browsing
-PRIVATE=false
+PRIVATE=true
 
 if [[ ${PRIVATE} == true ]]; then
     PRIVATE='-private'
@@ -49,13 +49,15 @@ else
     fi
 fi
 firefox -profile ${FIREFOX_SESSION} -no-remote -new-instance ${PRIVATE}
-rm -rf ${SESSION_TEMPLATE} || true
 
-# saving private session, and preserve the last session with ext .old
-if [[ $PRIVATE == true ]]; then
+# saving session, and preserve the last session with ext .old
+if [[ ${SAVE_SESSION} == true ]]; then
     tar czf ${FIREFOX_SESSION}.tar.gz ${FIREFOX_SESSION}
     cd ${CWD}
     mv ${FIREFOX_SESSION}.tar.gz ${FIREFOX_SESSION}.tar.gz.old || true
     mv ${PROFILEDIR}/${FIREFOX_SESSION}.tar.gz .
 fi
+
+# cleaning up
+rm -rf ${PROFILEDIR}/${SESSION_TEMPLATE} || true
 rm -rf ${PROFILEDIR}/${FIREFOX_SESSION}
